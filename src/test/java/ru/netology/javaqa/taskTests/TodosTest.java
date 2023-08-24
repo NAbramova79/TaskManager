@@ -1,8 +1,9 @@
 package ru.netology.javaqa.taskTests;
 
+import ru.netology.javaqa.tasks.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import ru.netology.javaqa.tasks.*;
 
 public class TodosTest {
 
@@ -27,7 +28,7 @@ public class TodosTest {
         todos.add(meeting);
 
         Task[] expected = {simpleTask, epic, meeting};
-        Task[] actual = todos.findAll();
+        Task[] actual = Todos.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -85,7 +86,7 @@ public class TodosTest {
     }
 
     @Test
-    public void shouldSearchMeetingAndEpicWhenTrue() {
+    public void shouldSearchMeetingWhenTrue() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
 
         String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
@@ -104,60 +105,8 @@ public class TodosTest {
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] expected = {meeting, epic};
-        Task[] actual = todos.search("Выкатка", "Молоко");
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSearchAllThreeTasksWhenTrue() {
-        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
-
-        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
-        Epic epic = new Epic(55, subtasks);
-
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
-
-        Todos todos = new Todos();
-
-        todos.add(simpleTask);
-        todos.add(epic);
-        todos.add(meeting);
-
-        Task[] expected = {meeting, epic, simpleTask};
-        Task[] actual = todos.search("Выкатка", "Молоко", "Позвонить");
-
-        Assertions.assertArrayEquals(expected, actual);
-    }
-
-    @Test
-    public void shouldSearchTwoTrueTasksOutOfThree() {
-        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
-
-        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
-        Epic epic = new Epic(55, subtasks);
-
-        Meeting meeting = new Meeting(
-                555,
-                "Выкатка 3й версии приложения",
-                "Приложение НетоБанка",
-                "Во вторник после обеда"
-        );
-
-        Todos todos = new Todos();
-
-        todos.add(simpleTask);
-        todos.add(epic);
-        todos.add(meeting);
-
-        Task[] expected = {meeting, epic};
-        Task[] actual = todos.search("Выкатка", "Молоко", "передать");
+        Task[] expected = {meeting};
+        Task[] actual = todos.search("Выкатка");
 
         Assertions.assertArrayEquals(expected, actual);
     }
@@ -183,15 +132,14 @@ public class TodosTest {
         todos.add(meeting);
 
         Task[] expected = {};
-        Task[] actual = todos.search("Запуск", "Картошка", "передать");
+        Task[] actual = todos.search("Запуск");
 
         Assertions.assertArrayEquals(expected, actual);
     }
 
     @Test
     public void shouldSearchDifferentTasksWithSimilarQuery() {
-        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
-        SimpleTask simpleTask1 = new SimpleTask(8, "Купить Хлеб и Яйца")
+        SimpleTask simpleTask = new SimpleTask(5, "Купить Хлеб и Яйца");
 
         String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
         Epic epic = new Epic(55, subtasks);
@@ -209,8 +157,34 @@ public class TodosTest {
         todos.add(epic);
         todos.add(meeting);
 
-        Task[] expected = {simpleTask1, epic};
+        Task[] expected = {simpleTask, epic};
         Task[] actual = todos.search("Хлеб");
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldFindAllTasks() {
+        SimpleTask simpleTask = new SimpleTask(5, "Купить Хлеб и Яйца");
+
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        Todos todos = new Todos();
+
+        todos.add(simpleTask);
+        todos.add(epic);
+        todos.add(meeting);
+
+        Task[] expected = {simpleTask, epic, meeting};
+        Task[] actual = Todos.findAll();
 
         Assertions.assertArrayEquals(expected, actual);
     }

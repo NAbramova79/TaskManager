@@ -1,7 +1,7 @@
 package ru.netology.javaqa.tasks;
 
 public class Todos {
-    private Task[] tasks = new Task[0];
+    private static Task[] tasks = new Task[0];
 
     private Task[] addToArray(Task[] current, Task task) {
         Task[] tmp = new Task[current.length + 1];
@@ -16,7 +16,7 @@ public class Todos {
         tasks = addToArray(tasks, task);
     }
 
-    public Task[] findAll() {
+    public static Task[] findAll() {
         return tasks;
     }
 

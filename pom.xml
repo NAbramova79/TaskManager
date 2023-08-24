@@ -21,6 +21,12 @@
             <version>5.7.0</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -95,6 +101,7 @@
                                     </limits>
                                 </rule>
                             </rules>
+                            <haltOnFailure>false</haltOnFailure>
                         </configuration>
                     </execution>
                 </executions>

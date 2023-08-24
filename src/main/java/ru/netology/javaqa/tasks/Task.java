@@ -1,13 +1,15 @@
 package ru.netology.javaqa.tasks;
 
+import java.util.Objects;
+
 public class Task {
-    protected int id;
+    protected static int id;
 
     public Task(int id) {
         this.id = id;
     }
 
-    public int getId() {
+    public static int getId() {
         return id;
     }
 
