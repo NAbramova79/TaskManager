@@ -16,9 +16,9 @@ public class Todos {
         tasks = addToArray(tasks, task);
     }
 
-   public Task[] findAll() {
+    public Task[] findAll() {
         return tasks;
-   }
+    }
 
     public Task[] search(String query) {
         Task[] result = new Task[0];

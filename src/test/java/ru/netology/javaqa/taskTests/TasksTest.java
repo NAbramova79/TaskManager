@@ -101,4 +101,80 @@ public class TasksTest {
 
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldGetId() {
+        Task task = new Task(22);
+
+        int expected = 22;
+        int actual = task.getId();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetTitleForSimpleTask() {
+        SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
+
+        String expected = "Позвонить родителям";
+        String actual = simpleTask.getTitle();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetSubtasksForEpic() {
+        String[] subtasks = {"Молоко", "Яйца", "Хлеб"};
+        Epic epic = new Epic(55, subtasks);
+
+        String[] expected = {"Молоко", "Яйца", "Хлеб"};
+        String[] actual = epic.getSubtasks();
+
+        Assertions.assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetTopicForMeeting() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        String expected = "Выкатка 3й версии приложения";
+        String actual = meeting.getTopic();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetProjectForMeeting() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        String expected = "Приложение НетоБанка";
+        String actual = meeting.getProject();
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
+    public void shouldGetStartForMeeting() {
+        Meeting meeting = new Meeting(
+                555,
+                "Выкатка 3й версии приложения",
+                "Приложение НетоБанка",
+                "Во вторник после обеда"
+        );
+
+        String expected = "Во вторник после обеда";
+        String actual = meeting.getStart();
+
+        Assertions.assertEquals(expected, actual);
+    }
 }
