@@ -2,9 +2,9 @@ package ru.netology.javaqa.tasks;
 
 public class Meeting extends Task {
 
-    protected static String topic;
-    protected static String project;
-    protected static String start;
+    protected String topic;
+    protected String project;
+    protected String start;
 
     public Meeting(int id, String topic, String project, String start) {
         super(id);
@@ -13,15 +13,15 @@ public class Meeting extends Task {
         this.start = start;
     }
 
-    public static String getTopic() {
+    public String getTopic() {
         return topic;
     }
 
-    public static String getProject() {
+    public String getProject() {
         return project;
     }
 
-    public static String getStart() {
+    public String getStart() {
         return start;
     }
 

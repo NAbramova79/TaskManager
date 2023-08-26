@@ -1,14 +1,14 @@
 package ru.netology.javaqa.tasks;
 
 public class SimpleTask extends Task {
-    protected static String title;
+    protected String title;
 
     public SimpleTask(int id, String title) {
         super(id);
-        SimpleTask.title = title;
+        this.title = title;
     }
 
-    public static String getTitle() {
+    public String getTitle() {
         return title;
     }
 

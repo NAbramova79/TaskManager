@@ -3,13 +3,13 @@ package ru.netology.javaqa.tasks;
 import java.util.Objects;
 
 public class Task {
-    protected static int id;
+    protected int id;
 
     public Task(int id) {
         this.id = id;
     }
 
-    public static int getId() {
+    public int getId() {
         return id;
     }
 
