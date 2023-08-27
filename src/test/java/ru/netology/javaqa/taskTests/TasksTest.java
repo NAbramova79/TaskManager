@@ -113,6 +113,16 @@ public class TasksTest {
     }
 
     @Test
+    public void shouldReturnFalse() {
+        Task task = new Task(22);
+
+        boolean expected = false;
+        boolean actual = task.matches("Хлеб");
+
+        Assertions.assertEquals(expected, actual);
+    }
+
+    @Test
     public void shouldGetTitleForSimpleTask() {
         SimpleTask simpleTask = new SimpleTask(5, "Позвонить родителям");
 
